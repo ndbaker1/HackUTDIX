@@ -143,8 +143,6 @@
 
 #form-file-upload {
   height: 16rem;
-  width: 28rem;
-  max-width: 100%;
   text-align: center;
   position: relative;
 }

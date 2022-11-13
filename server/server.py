@@ -34,13 +34,45 @@ class_descriptions_encoded = {
 
 print("finished preparing class data!")
 
+from enum import Enum
+class FilterParams(Enum):
+    NUM_min_level = 'min course level'
+    NUM_max_level = 'max course level'
+
+def class_filter(class_id, filter_params: dict):
+    details = class_details[class_id]
+
+    if FilterParams.NUM_min_level.value in filter_params:
+        if int(details['course_number'][0]) < int(filter_params[FilterParams.NUM_min_level.value]):
+            return False
+
+    if FilterParams.NUM_max_level.value in filter_params:
+        if int(details['course_number'][0]) > int(filter_params[FilterParams.NUM_max_level.value]):
+            return False
+
+    return True
+
+@app.get('/params')
+def field_params():
+    return [(item.name, item.value) for item in FilterParams]
 
 @app.post('/search/text')
 def text():
     posting_description = request.json['description']
+    filter_params = request.json['filter_params']
+
+    print(request.json)
+
+    filtered_class_encodings = {
+        class_id: enc
+        for class_id, enc
+        in class_descriptions_encoded.items()
+        if class_filter(class_id, filter_params)
+    }
+
     sorted_class_recommendations = compute_similarity(
         encode_text(posting_description),
-        class_descriptions_encoded,
+        filtered_class_encodings,
     )
 
     return {

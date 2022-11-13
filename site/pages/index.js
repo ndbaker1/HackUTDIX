@@ -5,7 +5,7 @@ export const POSTS_PER_PAGE = 5
 export default function Blog() {
   return (
     <>
-      <ListLayout title="Match" />
+      <ListLayout title="Find the right courses for you 📚" />
     </>
   )
 }

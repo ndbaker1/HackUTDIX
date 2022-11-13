@@ -27,10 +27,6 @@ def fetch_class_data(class_id: str):
         headers={ 'x-api-key': apikey },
     ).json()['data']
 
-
-def course_filter(course_details):
-    return int(course_details['course_number'][0]) > 1
-
 def fetch_class_ids(page: int):
     response = requests.get(
         f'https://{nebula_url}/course?subject_prefix=CS&offset={page}',
@@ -40,7 +36,7 @@ def fetch_class_ids(page: int):
     if response['data'] == None:
         return None
     
-    return [entry['_id'] for entry in filter(course_filter, response['data'])]
+    return [entry['_id'] for entry in response['data']]
 
 
 def encode_text(text_description: str):
