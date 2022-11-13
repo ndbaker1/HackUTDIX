@@ -1,2 +1,2 @@
 #!/bin/bash
-pip install -U transformers torch requests flask flask_cors
+pip install -U transformers requests flask flask_cors

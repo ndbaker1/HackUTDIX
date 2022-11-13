@@ -10,10 +10,15 @@ print("preparing utd encoded class data...")
 
 print("fetching class id's...")
 id_set = set()
-for page in range(0, 100, 20):
-    id_set.update(fetch_class_ids(page))
+for page in range(0, 500, 20):
+    items = fetch_class_ids(page)
+    if items is None:
+        break
+    id_set.update(items)
 
-print("fetching class description...")
+print(f'fetched {len(id_set)} classes.')
+
+print("fetching class descriptions...")
 class_details = {
     class_id: fetch_class_data(class_id)
     for class_id

@@ -21,28 +21,27 @@ def mean_pooling(model_output, attention_mask):
     return torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(input_mask_expanded.sum(1), min=1e-9)
 
 
-
 def fetch_class_data(class_id: str):
     return requests.get(
         f'https://{nebula_url}/course/{class_id}',
         headers={ 'x-api-key': apikey },
     ).json()['data']
 
-def fetch_class_ids(page: int):
-    class_id_iter = list()
 
-    class_id_iter = chain(
-        class_id_iter,
-        map(
-            lambda e: e['_id'],
-            requests.get(
-                f'https://{nebula_url}/course?subject_prefix=CS&offset={page}',
-                headers={ 'x-api-key': apikey },
-            ).json()['data']
-        )
-    ) 
+def course_filter(course_details):
+    return int(course_details['course_number'][0]) > 1
+
+def fetch_class_ids(page: int):
+    response = requests.get(
+        f'https://{nebula_url}/course?subject_prefix=CS&offset={page}',
+        headers={ 'x-api-key': apikey },
+    ).json()
     
-    return class_id_iter
+    if response['data'] == None:
+        return None
+    
+    return [entry['_id'] for entry in filter(course_filter, response['data'])]
+
 
 def encode_text(text_description: str):
     # Tokenize sentences

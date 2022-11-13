@@ -2,15 +2,15 @@
 
 ## Inspiration 
 
-## What it does X
+## What it does 
 
-## How we built it X
+## How we built it 
 We used open source ML models from HuggingFace for computing sentence similarity between UTD course descriptions pulled from the Nebula API, with the presentation and delivery powered by a python Flask server and React frontend.
 
-## Challenges we ran into X
+## Challenges we ran into
 
-## Accomplishments that we're proud of X
+## Accomplishments that we're proud of 
 
-## What we learned X
+## What we learned 
 
-## What's next X
+## What's next 
