@@ -10,11 +10,12 @@ print("preparing utd encoded class data...")
 
 print("fetching class id's...")
 id_set = set()
-for page in range(0, 500, 20):
-    items = fetch_class_ids(page)
-    if items is None:
-        break
-    id_set.update(items)
+for subject in ("CS", "MATH"):
+    for page in range(0, 500, 20):
+        items = fetch_class_ids(page, subject_prefix=subject)
+        if items is None:
+            break
+        id_set.update(items)
 
 print(f'fetched {len(id_set)} classes.')
 
@@ -38,6 +39,7 @@ from enum import Enum
 class FilterParams(Enum):
     NUM_min_level = 'min course level'
     NUM_max_level = 'max course level'
+    STR_subject_list = 'subject prefixes (ex: CS,MATH)'
 
 def class_filter(class_id, filter_params: dict):
     details = class_details[class_id]
@@ -48,6 +50,10 @@ def class_filter(class_id, filter_params: dict):
 
     if FilterParams.NUM_max_level.value in filter_params:
         if int(details['course_number'][0]) > int(filter_params[FilterParams.NUM_max_level.value]):
+            return False
+
+    if FilterParams.STR_subject_list.value in filter_params:
+        if details['subject_prefix'] not in filter_params[FilterParams.STR_subject_list.value].split(','):
             return False
 
     return True

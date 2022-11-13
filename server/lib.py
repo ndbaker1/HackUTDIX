@@ -27,9 +27,9 @@ def fetch_class_data(class_id: str):
         headers={ 'x-api-key': apikey },
     ).json()['data']
 
-def fetch_class_ids(page: int):
+def fetch_class_ids(page: int, subject_prefix: str = "CS"):
     response = requests.get(
-        f'https://{nebula_url}/course?subject_prefix=CS&offset={page}',
+        f'https://{nebula_url}/course?subject_prefix={subject_prefix}&offset={page}',
         headers={ 'x-api-key': apikey },
     ).json()
     

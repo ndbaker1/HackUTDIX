@@ -99,7 +99,7 @@ export default function ListLayout({ title }) {
         </div>
         <ul>
           {posts.map((frontMatter) => {
-            const { course_number, title, description } = frontMatter['class_details']
+            const { course_number, subject_prefix, title, description } = frontMatter['class_details']
             const score = frontMatter['score']
 
             return (
@@ -108,7 +108,7 @@ export default function ListLayout({ title }) {
                   <div className="space-y-3 xl:col-span-3">
                     <details>
                       <summary className="text-2xl font-bold tracking-tight">
-                        {course_number} - {title}
+                        {subject_prefix} {course_number} - {title}
                         <div className="prose text-gray-500 dark:text-gray-400">
                           Rating : {score}
                         </div>
