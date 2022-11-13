@@ -10,7 +10,7 @@ export default function ListLayout({ title }) {
 
   async function sendTextQuery(textDescription) {
     return await (await fetch(
-      'http://localhost:5000/search/text',
+      `http://${location.hostname}:5000/search/text`,
       {
         body: JSON.stringify({
           description: textDescription,
@@ -44,7 +44,7 @@ export default function ListLayout({ title }) {
 
 
   useEffect(async () => {
-    setOptions(await (await fetch('http://localhost:5000/params')).json())
+    setOptions(await (await fetch(`http://${location.hostname}:5000/params`)).json())
   }, [])
 
   function fileUpload(file) {
