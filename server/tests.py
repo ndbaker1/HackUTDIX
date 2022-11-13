@@ -117,16 +117,21 @@ example_plaintext_postings = [
 )
 ]
 
+print("preparing utd encoded class data...")
+
+print("fetching class id's...")
 id_set = set()
 for page in range(0, 100, 20):
     id_set.update(fetch_class_ids(page))
 
+print("fetching class description...")
 class_descriptions = {
     class_id: fetch_class_data(class_id)['description']
     for class_id
     in id_set
 }
 
+print("encoding class descriptions...")
 class_descriptions_encoded = {
     class_id: encode_text(description)
     for class_id, description
@@ -139,6 +144,6 @@ for post_position, posting_content in example_plaintext_postings:
         class_descriptions_encoded,
     )
 
-    print(post_position)
+    print('\n\n', post_position)
     for rec in sorted_class_recommendations:
         print(fetch_class_data(rec[0])['title'], rec[1])

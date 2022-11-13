@@ -1,0 +1,80 @@
+{
+    "__v": 0,
+    "_id": "62414eabe27d0c74c40945d3",
+    "activity_type": "Lecture",
+    "class_level": "Undergraduate",
+    "co_or_pre_requisites": {
+        "options": [],
+        "required": 0,
+        "type": "collection"
+    },
+    "corequisites": {
+        "options": [
+            {
+                "max_hours": 9,
+                "type": "limit"
+            }
+        ],
+        "required": 1,
+        "type": "collection"
+    },
+    "course_number": "4301",
+    "credit_hours": "3",
+    "description": "CS 4301 - Special Topics in Computer Science (3 semester credit hours) May be repeated for credit as topics vary (9 semester credit hours maximum). Prerequisite: CE 3345 or CS 3345 or SE 3345 or TE 3345. (3-0) S",
+    "grading": "Graded - Undergraduate",
+    "internal_course_number": "015109",
+    "laboratory_contact_hours": "0",
+    "lecture_contact_hours": "3",
+    "offering_frequency": "S",
+    "prerequisites": {
+        "options": [
+            {
+                "options": [
+                    {
+                        "class_reference": "624132a4e27d0c74c4094329",
+                        "type": "course"
+                    },
+                    {
+                        "class_reference": "62414e9ee27d0c74c40945b1",
+                        "type": "course"
+                    },
+                    {
+                        "class_reference": "6241d159e0a87a87f38b213c",
+                        "type": "course"
+                    },
+                    {
+                        "class_reference": "624202dd9f98f08244520623",
+                        "type": "course"
+                    }
+                ],
+                "required": 1,
+                "type": "collection"
+            }
+        ],
+        "required": 1,
+        "type": "collection"
+    },
+    "school": "Erik Jonsson School of Engineering and Computer Science",
+    "sections": [
+        "62414eabe27d0c74c40945d2",
+        "62414eace27d0c74c40945d4",
+        "62410692ba30b4ebd5adbc02",
+        "62410692ba30b4ebd5adbc04",
+        "62410693ba30b4ebd5adbc05",
+        "62410693ba30b4ebd5adbc06",
+        "6241e7d2a698d6bd4b833b6e",
+        "62407985ddc4b627a73c013d",
+        "6240798eddc4b627a73c013f",
+        "624175464f665f12b9425d2b",
+        "624175464f665f12b9425d2d",
+        "623fef37bf28b6d88d6c7792",
+        "623fef37bf28b6d88d6c7794",
+        "623fef38bf28b6d88d6c7795",
+        "6242551322d0f476459151ee",
+        "6242551422d0f476459151f0",
+        "6242551422d0f476459151f1",
+        "6242a97986ab87d6f6d9936c"
+    ],
+    "subject_prefix": "CS",
+    "title": "Special Topics in Computer Science - Natural Language Processing"
+}
